@@ -1,0 +1,224 @@
+$icon-color: rgba(black, 0.3);
+$primary-color: #545862;
+$light-bg: #f1f1f1;
+$border-radius: 3px;
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  background-color: $light-bg;
+}
+
+.d-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.d-flex-sb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo-container {
+  max-width: 500px;
+  width: 100%;
+  margin: auto auto;
+  border-radius: $border-radius;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  padding-bottom: 1em;
+  background-color: $light-bg;
+  color: $primary-color;
+}
+
+li,
+.todo-list-title {
+  padding: 1em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background-color: white;
+}
+
+.todo-list-title .fa-sync {
+  font-size: 14px;
+}
+
+li:nth-of-type(2) {
+  padding: 1em 1em;
+}
+
+.todo-list-title {
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+
+  i {
+    color: $icon-color;
+
+    &:hover {
+      cursor: pointer;
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
+}
+
+.add-task-container {
+  padding: 0 1em;
+}
+
+.add-task-form {
+  width: 100%;
+
+  input,
+  input:hover,
+  input:focus {
+    border: 0;
+    outline: 0;
+    color: $primary-color;
+  }
+
+  .new-task {
+    flex-grow: 1;
+    padding: 1em 0;
+
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  .input-return {
+    background-image: url(https://web.archive.org/web/20180728085226im_/http://www.getminimalist.com/assets/enter-b06ec7fb441bc0e40d61ba975a0291ad.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: transparent;
+    background-size: 10px;
+    width: 20px;
+    height: 20px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.task {
+  padding: 0 1em !important;
+  position: relative;
+  gap: 0.5rem;
+  flex-grow: 1;
+
+  input[type='checkbox'] {
+    margin: 1em 0;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #c1c1c3;
+    border-radius: $border-radius;
+    position: relative;
+    appearance: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:focus,
+    &:active {
+      outline: none;
+      border-color: #8b8b8b;
+    }
+
+    &:checked {
+      border: 0;
+
+      &::after {
+        font-family: 'Font Awesome 6 Free', sans-serif;
+        font-weight: 600;
+        content: '\f00c';
+        font-size: 15px;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        color: rgba(46, 138, 230, 0.7);
+      }
+    }
+  }
+
+  .edit-task {
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $primary-color;
+    flex-grow: 1;
+    align-self: stretch;
+
+    &:hover,
+    &:focus {
+      outline: none;
+    }
+  }
+
+  input[type='checkbox']:checked + label + .edit-task {
+    text-decoration: line-through;
+    color: $icon-color;
+  }
+
+  .task-icon {
+    color: $icon-color;
+    position: absolute;
+    right: 1em;
+    width: 25px;
+    height: 25px;
+    background-color: inherit;
+
+    &:hover {
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  .fa-trash-alt {
+    z-index: 1;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+.fa-ellipsis-v {
+  z-index: 2;
+
+  &:hover {
+    cursor: move;
+  }
+}
+
+.clear-completed {
+  display: block;
+  margin: 1rem auto 0;
+  border: 0;
+  color: $icon-color;
+
+  &:hover {
+    color: #000;
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: normal;
+  }
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
